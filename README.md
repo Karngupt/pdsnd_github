@@ -19,4 +19,4 @@ Following are the files used for this project:
   - washingto.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Credits go to training material in Udacity's **Programming for Data Science with Python** nanodegree program. Helpful websites such as **Stack Overflow** were also of great help!
