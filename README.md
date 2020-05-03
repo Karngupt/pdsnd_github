@@ -11,7 +11,12 @@ This project makes use of *Python* to explore data related to bike share systems
 -Washington
 
 ### Files used
-Include the files used
+Following are the files used for this project:
+- A helper code with comments: *bikeshare.py*
+- Three city dataset files:
+  - chicago.csv
+  - new_york_city.csv
+  - washingto.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
