@@ -13,7 +13,7 @@ import calendar
 # In[ ]:
 
 
-#Reading in raw data to help user view later
+#Reading in raw data to enable user to view it
 chicago_orig=pd.read_csv("chicago.csv")
 newyork_orig=pd.read_csv("new_york_city.csv")
 washington_orig=pd.read_csv("washington.csv")
@@ -21,7 +21,7 @@ washington_orig=pd.read_csv("washington.csv")
 
 # In[ ]:
 
-
+#Making some basic edits to the raw dataframes
 chicago = pd.read_csv("chicago.csv")
 chicago = chicago.dropna(how='any')
 chicago['city']="chicago"
@@ -49,7 +49,7 @@ def get_filters():
             check = False
     print('_'*100)
     return city, month, day
-    
+
 
 
 # In[ ]:
@@ -79,7 +79,7 @@ chicago["month"] = chicago["Start Time"].dt.strftime("%B")
 chicago["day"] = chicago["Start Time"].dt.strftime("%A")
 chicago["hour"] = chicago["Start Time"].dt.strftime("%H")
 chicago["combination"] = chicago["Start Station"] + " to " + chicago["End Station"]
-chicago.head()                                      
+chicago.head()
 
 
 # In[ ]:
@@ -146,17 +146,17 @@ def load_data(city, month, day):
         df = newyork
     else:
         df = washington
-        
+
     if month == "all":
         df = df
     else:
         df = df[(df["month"] == int(month))]
-        
+
     if day == "all":
         df = df
     else:
         df = df[(df["day"] == int(day))]
-          
+
     return df
 
 
@@ -166,12 +166,12 @@ def load_data(city, month, day):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
     print('\nCalculating The Most Frequent Times of Travel...\n')
-    
+
 
     # display the most common month
     common_month = df['month'].mode()[0]
     print("The most common month of travel is "+str(common_month))
-          
+
     # display the most common day of week
     common_day = df['day'].mode()[0]
     print("The most common day of travel is "+str(common_day))
@@ -179,8 +179,8 @@ def time_stats(df):
     # display the most common start hour
     common_hour = df['hour'].mode()[0]
     print("The most common hour of travel is "+str(common_hour))
-    
-  
+
+
     print('_'*100)
 
 
@@ -191,7 +191,7 @@ def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
-  
+
 
     # display most commonly used start station
     common_startstation = df['Start Station'].mode()[0]
@@ -205,7 +205,7 @@ def station_stats(df):
     combination_endstation = df['combination'].mode()[0]
     print("The most common combination of start and end station is "+str(combination_endstation))
 
-    
+
     print('_'*100)
 
 
@@ -216,7 +216,7 @@ def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
-    
+
 
     # display total travel time
     Total = df['Trip Duration'].sum()
@@ -226,7 +226,7 @@ def trip_duration_stats(df):
     average = round(average,2)
     print ("Average time travelled is ", str(average))
 
-    
+
     print('_'*100)
 
 
@@ -242,7 +242,7 @@ def user_stats(df):
     user_counts = df['User Type'].value_counts()
     print ("The counts of user types:")
     print(user_counts)
-    
+
     # Display counts of gender
     if df.city.unique()==['chicago'] or df.city.unique()==['newyork']:
         gender_counts = df['Gender'].value_counts()
@@ -250,7 +250,7 @@ def user_stats(df):
         print(gender_counts)
     else:
         print ("Gender not available for chosen city")
-    
+
     # Display earliest, most recent, and most common year of birth
     if df.city.unique()==['chicago'] or df.city.unique()==['newyork']:
         common_birth=df['Birth Year'].mode()[0]
@@ -261,7 +261,7 @@ def user_stats(df):
         print ("The most common year of birth is "+str(common_birth))
     else:
         print ("Birth Year not available for chosen city")
-        
+
     print('_'*100)
 
 
@@ -292,7 +292,7 @@ def raw_data(df):
 def main():
     while True:
         city, month, day = get_filters()
- 
+
         df = load_data(city, month, day)
 
         time_stats(df)
@@ -310,4 +310,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
