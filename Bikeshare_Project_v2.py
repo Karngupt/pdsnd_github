@@ -21,7 +21,7 @@ washington_orig=pd.read_csv("washington.csv")
 
 # In[ ]:
 
-
+#Making some basic edits to the raw dataframes
 chicago = pd.read_csv("chicago.csv")
 chicago = chicago.dropna(how='any')
 chicago['city']="chicago"
